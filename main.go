@@ -31,5 +31,13 @@ func main() {
 		"second": 26.99,
 	}
 
-	fmt.Printf("Non-Generic Sums: %v and %v\n", SumInts(ints), SumFloats(floats))
+	fmt.Printf("Non-Generic Sums: %v and %v\n", SumIntsOrFloats(ints), SumIntsOrFloats(floats))
+}
+
+func SumIntsOrFloats[K comparable, V int64 | float64](m map[K]V) V {
+	var s V
+	for _, v := range m {
+		s += v
+	}
+	return s
 }
